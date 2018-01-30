@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {Route,Link} from 'react-router-dom';
 import Home from './Home';
 import About from './About';
+import Settings from './Settings';
 
 
 
@@ -16,6 +17,11 @@ const Navigation = ()=>{
                                 <a className={'white-text'}>Home</a>
                             </Link>    
                         </li>
+                        <li>
+                            <Link to={'/settings'}>
+                                <a className={'white-text'}>Settings</a>
+                            </Link>
+                       </li> 
                         <li>
                             <Link to={'/about'}>
                                 <a className={'white-text'}>About</a>

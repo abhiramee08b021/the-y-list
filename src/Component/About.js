@@ -1,24 +1,32 @@
 import React from 'react';
+import {Form, Button, Container, Header, Icon} from 'semantic-ui-react';
+
 
 export default class About extends React.Component {
 
     render(){
-        const style = {
-            height:300,
-            display:'flex',
-            alignItems:'center'
+        var styleContainer={
+            "margin-top":"30px",
+            "height": "300px",
+            "margin-bottom":"30px"
+        }
+        var stylePadding={
+            "padding":"20px"
         }
         return (
-            <div className={'container'}>
-                <h5 className={'teal-text'}> About Us</h5>
-                <div className={'card-pannel z-depth-5 teal'}>
-                    <div className={'container white-text'} style={style}>
-                      <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                      </p>
-                    </div>
-                </div>
+            <Container style={styleContainer}>
+                <Header className={'teal-text'} huge>
+                    <Icon name='info circle' />
+                    About 
+                </Header>
+            <div className={'card-pannel z-depth-5 deep-purple'} style={stylePadding}>
+            <div className={'container white-text'} >
+                <Header as='h2' className={'white-text'}>
+                    The Y List connects people in the Yale community :) 
+                </Header>
             </div>
+            </div>
+            </Container>
         );
     }
 }
