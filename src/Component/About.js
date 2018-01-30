@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form, Button, Container, Header, Icon} from 'semantic-ui-react';
+import {Container, Header, Icon} from 'semantic-ui-react';
 
 
 export default class About extends React.Component {

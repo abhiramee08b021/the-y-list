@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {Form, Button, Header,Icon, Container, Dropdown} from 'semantic-ui-react';
+import {Form, Button, Header,Icon, Container} from 'semantic-ui-react';
 import Validator from 'validator';
+import firebase from '../index'
 
-class RegistrationForm extends Component {
+class SignupForm extends Component {
     state = {
         data: {
             name: '',
@@ -14,6 +15,7 @@ class RegistrationForm extends Component {
         loading: false,
         errors: {}
     };
+    
 
     onChange = e =>  
         this.setState({
@@ -21,8 +23,16 @@ class RegistrationForm extends Component {
         });
 
     onSubmit = () => {
-        const errors = this.validate(this.state.data);
-        this.setState({errors});
+        //const errors = this.validate(this.state.data);
+        //this.setState({errors});
+        firebase.auth()
+            .createUserWithEmailAndPassword(this.state.data.email, this.state.data.password)
+            .then(function(){
+                window.location = '/';
+            })
+            .catch(function(errors){
+                console.log('error creating user');
+        });
     };
         
     validate = (data) => {
@@ -45,10 +55,10 @@ class RegistrationForm extends Component {
             {key: "other",
             value: "other",
             icon: "other gender",
-            text: "Other"},]
+            text: "Other"}]
         var styleContainer={
-            "margin-top":"30px",
-            "margin-bottom":"30px"
+            "marginTop":"30px",
+            "marginBottom":"30px"
         }
         var stylePadding={
             "padding":"20px"
@@ -58,7 +68,7 @@ class RegistrationForm extends Component {
         <Container style={styleContainer}>
             <Header className={'teal-text'} huge>
                 <Icon name='signup' />
-                Registration 
+                Signup 
             </Header>
         <div className={'card-pannel z-depth-5 deep-purple'} style={stylePadding}>
         <div className={'container'}>
@@ -92,7 +102,7 @@ class RegistrationForm extends Component {
                 value={data.password}
                 onChange={this.onChange} />
             <Button positive>
-                Register
+                Sign Up
             </Button>
         </Form>
         </div>
@@ -102,4 +112,4 @@ class RegistrationForm extends Component {
     }
 }
 
-export default RegistrationForm;
+export default SignupForm;

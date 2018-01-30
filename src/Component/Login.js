@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Form, Button, Container, Header, Icon} from 'semantic-ui-react';
 import Validator from 'validator';
+import firebase from '../index'
 
 class LoginForm extends Component {
     state = {
@@ -18,8 +19,16 @@ class LoginForm extends Component {
         });
 
     onSubmit = () => {
-        const errors = this.validate(this.state.data);
-        this.setState({errors});
+        //const errors = this.validate(this.state.data);
+        //this.setState({errors});
+        firebase.auth()
+            .signInWithEmailAndPassword(this.state.data.email, this.state.data.password)
+            .then(function(){
+                window.location = '/';
+            })
+            .catch(function(errors){
+                console.log('error logging in');
+            });
     };
         
     validate = (data) => {
@@ -74,6 +83,7 @@ class LoginForm extends Component {
             </Form>
             </div>
             </div>
+            
             <Button primary style={styleRegister}> 
                 Register 
             </Button>

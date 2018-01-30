@@ -28,8 +28,8 @@ export default class Home extends React.Component {
                     Or 
                 </p>
                 <p>
-                    <Link style={{display: 'block', height: '100%'}} to="/registration" >
-                        Register 
+                    <Link style={{display: 'block', height: '100%'}} to="/signup" >
+                        Sign Up 
                     </Link>
                 </p>
             </div>

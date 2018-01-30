@@ -1,10 +1,5 @@
-import React,{Component} from 'react';
-import {Route,Link} from 'react-router-dom';
-import Home from './Home';
-import About from './About';
-import Settings from './Settings';
-
-
+import React from 'react';
+import {Link} from 'react-router-dom';
 
 const Navigation = ()=>{
     return(

@@ -1,12 +1,22 @@
 import React from 'react';
 import {Form, Button, Container, Header, Icon} from 'semantic-ui-react';
+import firebase from '../index';
 
 function logoutAccount(){
-
+    firebase.auth().signOut().then(function() {
+        window.location = '/';
+    }).catch(function(error) {
+        // An error happened.
+      });
 }
 
 function deleteAccount(){
-
+    const user = firebase.auth().currentUser;
+    user.delete().then(function() {
+            window.location = '/';
+      }).catch(function(error) {
+        // An error happened.
+      });      
 }
 
 export default class Settings extends React.Component {
@@ -72,10 +82,10 @@ export default class Settings extends React.Component {
             </Form>
                     </div>
                 </div>
-            <Button negative style={styleLogout}> 
+            <Button onClick={deleteAccount} negative style={styleLogout}> 
                 Delete Account 
             </Button>
-            <Button negative style={styleLogout}> 
+            <Button onClick={logoutAccount} negative style={styleLogout}> 
                 Logout 
             </Button>
             </Container>
