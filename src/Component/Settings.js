@@ -1,7 +1,7 @@
 import React from 'react';
 import {Form, Button, Container, Header, Icon,Image, TextArea,Input} from 'semantic-ui-react';
 import firebase from '../index';
-import { updateUserInDatabase } from './Users';
+import { updateUserInDatabase, genderChoices } from './Users';
 import ImageUploader from 'react-images-upload';
 
 function logoutAccount(){
@@ -22,6 +22,10 @@ function deleteAccount(){
         console.log('error deleting user');
         console.log(error.message);
       });      
+}
+
+function clickCancel(){
+    window.location = '/';
 }
 
 export default class Settings extends React.Component {
@@ -57,9 +61,10 @@ export default class Settings extends React.Component {
     handleChange = (e, { name, value }) => this.setState({
         data: { ...this.state.data, [name]:value}});
 
+
     onSubmit = () => {
         //const errors = this.validate(this.state.data);
-        if (this.state.fileInput.files != null){
+        if (this.state.fileInput.files.length != 0){
             const file = this.state.fileInput.files[0];
             var downloadURL;
             const storageRef = firebase.storage().ref();
@@ -77,11 +82,13 @@ export default class Settings extends React.Component {
                 const data = this.state.data;
                 console.log(data);
                 updateUserInDatabase(data);
+                window.location = '/';
             });
         }
         else {
             const data = this.state.data;
             updateUserInDatabase(data);
+            window.location = '/';
         }
     };
 
@@ -172,7 +179,7 @@ export default class Settings extends React.Component {
                 <Button positive>
                     Save Changes
                 </Button>
-                <Button>
+                <Button type='cancel' onClick={clickCancel}>
                     Cancel
                 </Button>
             </Form>
