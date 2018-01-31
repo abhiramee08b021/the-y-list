@@ -2,13 +2,14 @@ import React, {Component} from 'react';
 import {Form, Button, Header,Icon, Container} from 'semantic-ui-react';
 import Validator from 'validator';
 import firebase from '../index'
+import addUserInDatabase from './Users';
 
 class SignupForm extends Component {
     state = {
         data: {
             name: '',
             gender: '',
-            preferedGender:'',
+            preferGender:'',
             email: '',
             password: ''
         },
@@ -16,7 +17,6 @@ class SignupForm extends Component {
         errors: {}
     };
     
-
     onChange = e =>  
         this.setState({
             data: { ...this.state.data, [e.target.name]:e.target.value}
@@ -24,14 +24,15 @@ class SignupForm extends Component {
 
     onSubmit = () => {
         //const errors = this.validate(this.state.data);
-        //this.setState({errors});
+        const {data, errors} = this.state;
         firebase.auth()
             .createUserWithEmailAndPassword(this.state.data.email, this.state.data.password)
             .then(function(){
-                window.location = '/';
+                addUserInDatabase(data);
             })
-            .catch(function(errors){
+            .catch(function(error){
                 console.log('error creating user');
+                console.log(error.message);
         });
     };
         
@@ -61,7 +62,8 @@ class SignupForm extends Component {
             "marginBottom":"30px"
         }
         var stylePadding={
-            "padding":"20px"
+            "padding":"20px",
+            "border-radius": "5px"
         }
         const {data, errors} = this.state;
         return(
@@ -82,8 +84,20 @@ class SignupForm extends Component {
                 placeholder="Jane Q Yalie"
                 value={data.name}
                 onChange={this.onChange} />
-            <Form.Dropdown label="Gender" placeholder='Select Gender' fluid selection options={genderOptions} />
-            <Form.Dropdown label="Prefer Gender" placeholder='Select Gender of who you are interested in' fluid selection options={genderOptions} />
+            <Form.Dropdown 
+                label="Gender" 
+                placeholder='Select Gender' 
+                fluid selection 
+                options={genderOptions} 
+                value={data.gender}
+                onChange={this.onChange}/>
+            <Form.Dropdown 
+                label="Prefer Gender" 
+                placeholder='Select Gender of who you are interested in' 
+                fluid selection 
+                options={genderOptions}
+                value={data.preferGender}
+                onChange={this.onChange} />
             <Form.Input 
                 error={!!errors.email}
                 label="Email" 

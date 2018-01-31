@@ -46,7 +46,8 @@ class LoginForm extends Component {
             "margin-bottom":"30px"
         }
         var stylePadding={
-            "padding":"20px"
+            "padding":"20px",
+            "border-radius": "5px"
         }
         var styleRegister={
             "margin-top":"20px",

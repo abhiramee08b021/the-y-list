@@ -6,6 +6,8 @@
     "firebase": "^4.9.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-image-picker": "^1.1.1",
+    "react-images-upload": "^1.1.1",
     "react-native": "^0.52.2",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",

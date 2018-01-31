@@ -21,8 +21,6 @@ firebase.initializeApp(config);
 export default firebase;
 
 
-
-
 ReactDOM.render(
        <Router>
                 <App /> 

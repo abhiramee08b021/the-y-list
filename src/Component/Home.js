@@ -10,7 +10,8 @@ export default class Home extends React.Component {
             "margin-bottom":"30px"
         }
         var stylePadding={
-            "padding":"20px"
+            "padding":"20px",
+            "border-radius": "5px"
         }
         return (
             <Container style={styleContainer}>
