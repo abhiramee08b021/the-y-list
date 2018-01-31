@@ -22,6 +22,9 @@ class SignupForm extends Component {
             data: { ...this.state.data, [e.target.name]:e.target.value}
         });
 
+    handleChange = (e, { name, value }) => this.setState({
+        data: { ...this.state.data, [name]:value}});
+
     onSubmit = () => {
         //const errors = this.validate(this.state.data);
         const {data, errors} = this.state;
@@ -85,19 +88,17 @@ class SignupForm extends Component {
                 value={data.name}
                 onChange={this.onChange} />
             <Form.Dropdown 
-                label="Gender" 
-                placeholder='Select Gender' 
-                fluid selection 
-                options={genderOptions} 
-                value={data.gender}
-                onChange={this.onChange}/>
+                    label="Gender"
+                    name="gender" 
+                    placeholder={data.gender}
+                    fluid selection options={genderOptions}
+                    onChange={this.handleChange}  />
             <Form.Dropdown 
-                label="Prefer Gender" 
-                placeholder='Select Gender of who you are interested in' 
-                fluid selection 
-                options={genderOptions}
-                value={data.preferGender}
-                onChange={this.onChange} />
+                    label="Prefer Gender" 
+                    name="preferGender"
+                    placeholder={data.preferGender}
+                    fluid selection options={genderOptions}
+                    onChange={this.handleChange} />
             <Form.Input 
                 error={!!errors.email}
                 label="Email" 
