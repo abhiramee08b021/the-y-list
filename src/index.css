@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  padding: 10%;
+  position: relative;
+  padding-bottom: 20rem;
+  min-height: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.LoginSegment {
+  width: 30em;
+  padding: 10px;
+}
+
+.AppContent {
+    width:90%;
+    margin-bottom: 10em;
+}
+
+.footer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  padding: 1rem;
+  background-color: #f8f7f7;
+  text-align: center;
+}

@@ -1,27 +1,25 @@
 import React, { Component } from 'react';
 import {Route} from 'react-router-dom'
-
-import Home from './Component/Home';
-import About from './Component/About';
-import Settings from './Component/Settings';
-import SignupForm from './Component/Signup';
-import LoginForm from './Component/Login';
-import Navigation from './Component/Navigation'
-
+import Navigation from './Components/Navigation';
+import LoginForm from './Components/LoginForm';
+import SignupForm from './Components/SignupForm';
+import AboutPage from './Components/AboutPage';
+import Footer from './Components/Footer';
+import {firebase} from './index'
+import HomePage from './Components/HomePage';
 
 class App extends Component {
   render() {
     return (
-      <div>
-          <Navigation/>
-           {/**
-                 *  route to diffrent component 
-                 */}
-         <Route exact={true} path={'/'} component={Home} />
-         <Route exact={true} path={'/about'} component={About}/>
-         <Route exact={true} path={'/settings'} component={Settings}/>
-         <Route exact={true} path={'/login'} component={LoginForm}/>
-         <Route exact={true} path={'/signup'} component={SignupForm}/>
+      <div className="App">
+        <Navigation/>
+        <div className="AppContent">
+        <Route exact={true} path={'/login'} component={LoginForm} />
+        <Route exact={true} path={'/signup'} component={SignupForm} />
+        <Route exact={true} path={'/about'} component={AboutPage} />
+        <Route exact={true} path={'/home'} component={HomePage} />
+        </div>
+        <Footer/>
       </div>
     );
   }

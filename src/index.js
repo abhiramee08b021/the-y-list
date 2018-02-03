@@ -3,12 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter as Router,
-        Route,Link
-
-
-} from 'react-router-dom';
-import Home from './Component/Home';
-import About from './Component/About';
+        Route,Link} from 'react-router-dom';
+import './index.css';
 import 'semantic-ui-css/semantic.min.css';
 var firebase = require('firebase');
 var config = {
@@ -18,8 +14,7 @@ var config = {
         storageBucket: "the-y-list.appspot.com",
       };
 firebase.initializeApp(config);
-export default firebase;
-
+export {firebase};
 
 ReactDOM.render(
        <Router>
