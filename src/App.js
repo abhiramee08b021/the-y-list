@@ -7,6 +7,8 @@ import AboutPage from './Components/AboutPage';
 import Footer from './Components/Footer';
 import {firebase} from './index'
 import HomePage from './Components/HomePage';
+import LandingPage from './Components/LandingPage';
+import AfterSubmissionPage from './Components/AfterSubmissionPage';
 
 class App extends Component {
   render() {
@@ -18,6 +20,8 @@ class App extends Component {
         <Route exact={true} path={'/signup'} component={SignupForm} />
         <Route exact={true} path={'/about'} component={AboutPage} />
         <Route exact={true} path={'/home'} component={HomePage} />
+        <Route exact={true} path={'/'} component={LandingPage} />
+        <Route exact={true} path={'/submitted'} component={AfterSubmissionPage} />        
         </div>
         <Footer/>
       </div>

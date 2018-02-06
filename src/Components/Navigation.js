@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import {Menu, Button} from 'semantic-ui-react';
 import { firebase } from '../index';
-import logo from '../Images/ylist_logo.png'
+import logo from '../Images/the-y-list.png'
 
 var LoginMenuItem = () => {
     return(
@@ -56,7 +56,7 @@ class Navigation extends React.Component {
         return(
             <Menu>
             <Menu.Item>
-                <a href='/home'>
+                <a href='/'>
                 <img class='ui mini image' src={logo}/>
                     </a>
             </Menu.Item>
@@ -66,13 +66,13 @@ class Navigation extends React.Component {
               onClick={this.handleItemClick}>
              Home
             </Menu.Item>
-            <Menu.Item
+            {false && <Menu.Item
               name='about'
               active={activeItem === 'about'}
               onClick={this.handleItemClick}
             >
                About
-            </Menu.Item>
+            </Menu.Item>}
             <Menu.Menu position='right'>
             { !this.state.data.isLoggedin && <LoginMenuItem/>}
             { !this.state.data.isLoggedin && <SignupMenuItem/>}

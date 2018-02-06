@@ -4,7 +4,8 @@ body {
   position: relative;
   padding-bottom: 20rem;
   min-height: 100%;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Junction', serif;
+  background: linear-gradient(right,#2fc3ff,#f75aa2);
 }
 
 .LoginSegment {
@@ -26,4 +27,9 @@ body {
   padding: 1rem;
   background-color: #f8f7f7;
   text-align: center;
+}
+
+.LandingPageSegment {
+  text-align: center;
+  font-size: 2em;
 }

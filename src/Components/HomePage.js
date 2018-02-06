@@ -2,6 +2,20 @@ import React from 'react';
 import {Form, Divider, Button, Segment, Message, Header, Embed} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 
+class Profile extends React.Component {
+
+}
+
+class ProfileContainer extends React.Component {
+    render(){
+        return (
+            <div>
+                
+            </div>
+        );
+    }
+}
+
 var AboutPost = () => {
     return (
         <div class="ui column stackable centered page grid">
@@ -18,6 +32,8 @@ var AboutPost = () => {
                     <p> Please <a href="/signup"> sign up </a> in the meantime </p>
                     <p> For more info please <a href="mailto:abhi.moturi@yale.edu?Subject=[The Y List]Heythere!"> contact us </a></p>
                 </Segment>
+
+                <Button onClick={()=>(window.location='/submitted')}> Submit </Button>
             </div>
         </div>
     )
