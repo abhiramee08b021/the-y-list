@@ -7,6 +7,7 @@ var User = {
     profileImageUrl:'',
     yaleAffiliation:'',
     password:'',
+    description: '',
 }
 
 var genderDropdownOptions = [
