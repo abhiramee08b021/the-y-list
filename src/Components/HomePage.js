@@ -121,15 +121,16 @@ class HomePage extends React.Component {
                 <AfterSubmissionPage/>
             );
         }
-        var d = new Date()
-        if (d.getHours() < 18){
+        
+        const profiles = this.state.profiles;
+        if (profiles.length < 35){
+            var remaining = 35-profiles.length
             return (
-                <WaitingPage/>
+                <WaitingPage remaining={"hello"}/>
             );
         }
-        const profiles = this.state.profiles;
-        console.log(profiles);
-        if (profiles.length >0){
+
+        else{
             return(
                 <div className="profilesSegment">
                     {profiles.map((profile) => {

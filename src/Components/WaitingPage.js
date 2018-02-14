@@ -3,7 +3,7 @@ import {Form, Divider, Button, Segment, Message, Header, Embed, Image} from 'sem
 import {Link} from 'react-router-dom';
 import logo from '../Images/the-y-list.png';
 
-var WaitingPageSegment = () => {
+function WaitingPageSegment(props) {
     return (
         <div class="ui column stackable centered page grid">
             <div class="column wide">
@@ -12,7 +12,7 @@ var WaitingPageSegment = () => {
                         <Image src={logo} size='medium' centered/>
                     </p>
                     <p>
-                        Come back at 6pm. We are filling the lookbook with more people.
+                        Come back in an hour or so. We are filling the lookbook with more people and need {props.remaining} people. 
                     </p>
                     <Divider/>
                     <Embed
