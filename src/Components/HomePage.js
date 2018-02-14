@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import LandingPage from './LandingPage';
 import VerifyEmailPage from './VerifyEmailPage';
 import AfterSubmissionPage from './AfterSubmissionPage';
+import WaitingPage from './WaitingPage';
 import firebase from 'firebase';
 import Profile from './Profile';
 
@@ -118,6 +119,12 @@ class HomePage extends React.Component {
         else if(this.state.didSubmitLikes){
             return (
                 <AfterSubmissionPage/>
+            );
+        }
+        var d = new Date()
+        if (d.getHours() < 18){
+            return (
+                <WaitingPage/>
             );
         }
         const profiles = this.state.profiles;
