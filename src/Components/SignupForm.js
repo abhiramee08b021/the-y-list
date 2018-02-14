@@ -116,7 +116,7 @@ class SignupForm extends React.Component {
             <Segment className='SignupSegment'>
                 <Form onSubmit={this.onSubmit} loading={loading}>
                     {(isSuccess) && <Message positive list={['Successfully Signed up! Redirecting to home page...']} />}
-                    <Form.Input name='name' type='text' fluid label='I am..' placeholder='Name' value={data.name} error={!!errors.name} onChange={this.onChange}/>
+                    <Form.Input name='name' type='text' fluid label='I am..' placeholder='Name, as you want it displayed' value={data.name} error={!!errors.name} onChange={this.onChange}/>
                     <Form.Dropdown name='age' label="Age" placeholder='Select Age' value={data.age} fluid selection options={ageDropdownOptions} error={!!errors.age} onChange={this.onDropdownChange}/>
                     <Form.Dropdown name='gender' label="Gender" placeholder='Select Gender' value={data.gender} fluid selection options={genderDropdownOptions} error={!!errors.gender} onChange={this.onDropdownChange}/>
                     <Form.Dropdown name='preferGender' label="I am interested in.." placeholder='Select Prefered Gender' value={data.preferGender} fluid selection options={genderDropdownOptions} error={!!errors.preferGender} onChange={this.onDropdownChange}/>
