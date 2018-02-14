@@ -102,6 +102,7 @@ class SignupForm extends React.Component {
         if (Validator.isEmpty(data.preferGender)) errors.gender = "Please pick a gender you are interested in";
         if (this.state.fileInput.files.length == 0) errors.profileImage = "Please upload a profile image";
         if (!Validator.isEmail(data.email)) errors.email = "Should be an email";
+        if(!data.email.toLowerCase().includes('@yale.edu')) errors.email = "Should be a yale email";
         if (Validator.isEmpty(data.yaleAffiliation)) errors.yaleAffiliation = "Please pick a yaleAffiliation";
         if (!Validator.isLength(data.password, {min:6})) errors.password = "Password should be atleast 6 chars long";
         return errors;
