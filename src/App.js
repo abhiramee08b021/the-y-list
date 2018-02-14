@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navigation/>
-        <div className="AppContent">
+        <div className="AppContent" style={{ 'text-align':'center' }}>
         <Route exact={true} path={'/login'} component={LoginForm} />
         <Route exact={true} path={'/signup'} component={SignupForm} />
         <Route exact={true} path={'/'} component={HomePage} />

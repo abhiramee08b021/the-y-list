@@ -21,7 +21,7 @@ class HomePage extends React.Component {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                this.setState({currentUser: user});
-               if (/*user.emailVerified*/true){
+               if (user.emailVerified){
                    console.log('email is verified')
                    this.setState({isUserVerified: true})
                    // now user is logged in check if user already submitted
@@ -90,10 +90,8 @@ class HomePage extends React.Component {
             
             usersRef.child(currentUserId).child('whoLikesMe').once("value", (snapshot) => {
                 const profiles = Object.keys(snapshot.val())
-                alert(profiles)
                 for (var i=0;i<profiles.length;i++){
                     if (profiles[i] == this.state.likedProfiles[i].id){
-                        alert(profiles[i])
                         usersRef.child(currentUserId).child('matches').child(this.state.likedProfiles[i].id).set(true)
                         usersRef.child(this.state.likedProfiles[i].id).child('matches').child(currentUserId).set(true);
                     }
