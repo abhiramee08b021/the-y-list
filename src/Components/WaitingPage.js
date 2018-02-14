@@ -12,7 +12,7 @@ function WaitingPageSegment(props) {
                         <Image src={logo} size='medium' centered/>
                     </p>
                     <p>
-                        Come back in an hour or so. We are filling the lookbook with more people and need {props.remaining} people. 
+                        Come back in an hour or so. We are filling the lookbook with more people. {props.rem} more people to go!
                     </p>
                     <Divider/>
                     <Embed
@@ -27,7 +27,7 @@ function WaitingPageSegment(props) {
 class WaitingPage extends React.Component {
     render(){
         return(
-            <WaitingPageSegment/>
+            <WaitingPageSegment rem={this.props.rem}/>
         )
     }
 }

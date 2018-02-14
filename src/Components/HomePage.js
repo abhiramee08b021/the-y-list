@@ -126,7 +126,7 @@ class HomePage extends React.Component {
         if (profiles.length < 35){
             var remaining = 35-profiles.length
             return (
-                <WaitingPage remaining={"hello"}/>
+                <WaitingPage rem={remaining}/>
             );
         }
 
