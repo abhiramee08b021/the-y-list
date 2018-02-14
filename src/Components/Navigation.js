@@ -61,18 +61,11 @@ class Navigation extends React.Component {
                     </a>
             </Menu.Item>
             <Menu.Item
-              name='home'
-              active={activeItem === 'home'}
+              name=''
+              active={activeItem === ''}
               onClick={this.handleItemClick}>
              Home
             </Menu.Item>
-            {false && <Menu.Item
-              name='about'
-              active={activeItem === 'about'}
-              onClick={this.handleItemClick}
-            >
-               About
-            </Menu.Item>}
             <Menu.Menu position='right'>
             { !this.state.data.isLoggedin && <LoginMenuItem/>}
             { !this.state.data.isLoggedin && <SignupMenuItem/>}

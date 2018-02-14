@@ -3,7 +3,8 @@ import {Form, Button, Segment, Message, Input, TextArea} from 'semantic-ui-react
 import User, {genderDropdownOptions, 
         yaleAffiliationDropdownOptions, 
         yaleGraduationDropdownOptions,
-        yaleInterestedJobsDropdownOptions} from '../Model/User';
+        yaleInterestedJobsDropdownOptions,
+        ageDropdownOptions} from '../Model/User';
 import {firebase} from '../index';
 import Validator from 'validator';
 import { addUserInDatabase, uploadProfileImage } from "../Model/UserFunctions";
@@ -11,7 +12,7 @@ import { addUserInDatabase, uploadProfileImage } from "../Model/UserFunctions";
 var HaveQuestions = () => {
     return (
         <Message>
-            <p class="ui center aligned grid"> Have any questions? <a href="mailto:abhi.moturi@yale.edu?Subject=[Giggly]Heythere!"> Email us! </a> We don't bite.
+            <p class="ui center aligned grid"> Have any questions? <a href="mailto:abhi.moturi@yale.edu?Subject=[The Y List]Heythere!"> Email us! </a> We don't bite.
             </p>
         </Message>
     );
@@ -96,6 +97,7 @@ class SignupForm extends React.Component {
     validate = (data) => {
         const errors = {};
         if (Validator.isEmpty(data.name)) errors.name = "Name should not be empty";
+        if (Validator.isEmpty(data.age)) errors.age = "Please pick an age";
         if (Validator.isEmpty(data.gender)) errors.gender = "Please pick a gender";
         if (Validator.isEmpty(data.preferGender)) errors.gender = "Please pick a gender you are interested in";
         if (this.state.fileInput.files.length == 0) errors.profileImage = "Please upload a profile image";
@@ -114,6 +116,7 @@ class SignupForm extends React.Component {
                 <Form onSubmit={this.onSubmit} loading={loading}>
                     {(isSuccess) && <Message positive list={['Successfully Signed up! Redirecting to home page...']} />}
                     <Form.Input name='name' type='text' fluid label='I am..' placeholder='Name' value={data.name} error={!!errors.name} onChange={this.onChange}/>
+                    <Form.Dropdown name='age' label="Age" placeholder='Select Age' value={data.age} fluid selection options={ageDropdownOptions} error={!!errors.age} onChange={this.onDropdownChange}/>
                     <Form.Dropdown name='gender' label="Gender" placeholder='Select Gender' value={data.gender} fluid selection options={genderDropdownOptions} error={!!errors.gender} onChange={this.onDropdownChange}/>
                     <Form.Dropdown name='preferGender' label="I am interested in.." placeholder='Select Prefered Gender' value={data.preferGender} fluid selection options={genderDropdownOptions} error={!!errors.preferGender} onChange={this.onDropdownChange}/>
                     <Form.Input name='email' type='email' fluid label='Email' placeholder='Jane.Yalie@Yale.edu' value={data.email} error={!!errors.email} onChange={this.onChange}/>

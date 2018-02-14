@@ -18,10 +18,7 @@ class App extends Component {
         <div className="AppContent">
         <Route exact={true} path={'/login'} component={LoginForm} />
         <Route exact={true} path={'/signup'} component={SignupForm} />
-        <Route exact={true} path={'/about'} component={AboutPage} />
-        <Route exact={true} path={'/home'} component={HomePage} />
-        <Route exact={true} path={'/'} component={LandingPage} />
-        <Route exact={true} path={'/submitted'} component={AfterSubmissionPage} />        
+        <Route exact={true} path={'/'} component={HomePage} />
         </div>
         <Footer/>
       </div>

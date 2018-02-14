@@ -21,10 +21,9 @@ class HomePage extends React.Component {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                this.setState({currentUser: user});
-               if (user.emailVerified){
+               if (/*user.emailVerified*/true){
                    console.log('email is verified')
                    this.setState({isUserVerified: true})
-                   
                    // now user is logged in check if user already submitted
                    const userRef = firebase.database().ref().child('Users').child(user.uid).once('value').then((snapshot) => {
                       const didSubmitLikes = (snapshot.val() && snapshot.val().didSubmitLikes) || false;
@@ -38,19 +37,25 @@ class HomePage extends React.Component {
                    // now user is logged in and verified and has not already submitted likes 
                    // load profiles
                    const usersRef = firebase.database().ref().child('Users');
-                   let newState = []
-                   usersRef.on('value', (snapshot) => {
-                        const profiles = snapshot.val();
-                        for (let profile in profiles){
-                            let p = profiles[profile]
-                            p.id = profile
-                            newState.push(p)
-                        }
-                        console.log(newState)
-                        this.setState({
-                            profiles: newState,
+                   const preferedGender = usersRef.child(user.uid).child('preferGender').once('value').then((snap) => {
+                        let newState = []
+                        usersRef.on('value', (snapshot) => {
+                            const profiles = snapshot.val();
+                            for (let profile in profiles){
+                                let p = profiles[profile]
+                                console.log(snap.val())
+                                if (p.gender == snap.val() && p.id != user.uid){
+                                    p.id = profile
+                                    newState.push(p)
+                                }
+                            }
+                            console.log(newState)
+                            this.setState({
+                                profiles: newState,
+                            })
                         })
-                    })
+                   })
+                   
         
                }
             } else {
@@ -70,6 +75,7 @@ class HomePage extends React.Component {
     addToListOfLikedProfiles = (profile) => {
         let newLikedProfiles = this.state.likedProfiles
         newLikedProfiles.push(profile)
+        console.log(this.state)
         this.setState({likedProfiles: newLikedProfiles})
         console.log(this.state.likedProfiles)
     }
@@ -77,11 +83,25 @@ class HomePage extends React.Component {
     
     onSubmitClick = () => {
         const currentUserId = firebase.auth().currentUser.uid;
-        var userRef = firebase.database().ref().child('Users').child(currentUserId)
+        var usersRef = firebase.database().ref().child('Users')
         for (var i=0; i<this.state.likedProfiles.length;i++){
-            userRef.child('likedProfiles').child(this.state.likedProfiles[i].id).set(true)
+            usersRef.child(currentUserId).child('likedProfiles').child(this.state.likedProfiles[i].id).set(true)
+            usersRef.child(this.state.likedProfiles[i].id).child('whoLikesMe').child(currentUserId).set(true);
+            
+            usersRef.child(currentUserId).child('whoLikesMe').once("value", (snapshot) => {
+                const profiles = Object.keys(snapshot.val())
+                alert(profiles)
+                for (var i=0;i<profiles.length;i++){
+                    if (profiles[i] == this.state.likedProfiles[i].id){
+                        alert(profiles[i])
+                        usersRef.child(currentUserId).child('matches').child(this.state.likedProfiles[i].id).set(true)
+                        usersRef.child(this.state.likedProfiles[i].id).child('matches').child(currentUserId).set(true);
+                    }
+                }
+            })
+              
         }
-        userRef.child('didSubmitLikes').set(true);
+        usersRef.child(currentUserId).child('didSubmitLikes').set(true);
         alert('Done submitting likes!');
         this.setState({
             didSubmitLikes: true,
@@ -106,7 +126,7 @@ class HomePage extends React.Component {
         console.log(profiles);
         if (profiles.length >0){
             return(
-                <div>
+                <div className="profilesSegment">
                     {profiles.map((profile) => {
                         return (
                             <Profile 
@@ -120,7 +140,7 @@ class HomePage extends React.Component {
             );
         }
         return(
-            <div> Hmm nothing is here....
+            <div> Hmm nothing is here... <a href="mailto:abhi.moturi@yale.edu?Subject=[The Y List]Heythere!">email us</a> and we'll take a look at whats going on
             </div>
             );
         
