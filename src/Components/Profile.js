@@ -25,16 +25,16 @@ class Profile extends React.Component {
                 <Image src={profile.profileImageUrl} />
                 <Card.Content>
                 <Card.Header>{profile.name}</Card.Header>
-                <Card.Meta>{profile.yaleAffiliation}</Card.Meta>
+                <Card.Meta>{profile.age}, {profile.yaleAffiliation}</Card.Meta>
                 <Card.Description>{profile.description}</Card.Description>
                 </Card.Content>
 
                 <Card.Content extra>
                     {liked && <button class="ui icon button" onClick={this.handleUnlikeButton}>
-                                <i class="red big heart icon"></i>
+                                <i class="redred big heart icon"></i>
                               </button>}
                     {!liked && <button class="ui icon button" onClick={this.handleLikeButton}>
-                                <i class="blue large heart icon"></i>
+                                <i class="blueblue large heart icon"></i>
                                </button>}
                 </Card.Content>
             </Card>

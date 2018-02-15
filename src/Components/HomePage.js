@@ -7,6 +7,7 @@ import AfterSubmissionPage from './AfterSubmissionPage';
 import WaitingPage from './WaitingPage';
 import firebase from 'firebase';
 import Profile from './Profile';
+import HowItWorks from './HowItWorks';
 
 class HomePage extends React.Component {
     state = {
@@ -90,11 +91,13 @@ class HomePage extends React.Component {
             usersRef.child(this.state.likedProfiles[i].id).child('whoLikesMe').child(currentUserId).set(true);
             
             usersRef.child(currentUserId).child('whoLikesMe').once("value", (snapshot) => {
-                const profiles = Object.keys(snapshot.val())
-                for (var i=0;i<profiles.length;i++){
-                    if (profiles[i] == this.state.likedProfiles[i].id){
-                        usersRef.child(currentUserId).child('matches').child(this.state.likedProfiles[i].id).set(true)
-                        usersRef.child(this.state.likedProfiles[i].id).child('matches').child(currentUserId).set(true);
+                if (snapshot!=null){
+                    const profiles = Object.keys(snapshot.val())
+                    for (var i=0;i<profiles.length;i++){
+                        if (profiles[i] == this.state.likedProfiles[i].id){
+                            usersRef.child(currentUserId).child('matches').child(this.state.likedProfiles[i].id).set(true)
+                            usersRef.child(this.state.likedProfiles[i].id).child('matches').child(currentUserId).set(true);
+                        }
                     }
                 }
             })
@@ -133,6 +136,7 @@ class HomePage extends React.Component {
         else{
             return(
                     <div style={{padding:'2em'}}>
+                    <HowItWorks />
                     <div class="ui grid">
                     {profiles.map((profile) => {
                         return (
@@ -144,7 +148,15 @@ class HomePage extends React.Component {
                     })}
                     </div>
                     <div class="ui centered grid">
-                    <Button positive content='submit' onClick={this.onSubmitClick}/> 
+                    <div class="column">
+                    <Button disabled={(this.state.likedProfiles.length>10)} style={{width: '100%'}} positive content='submit' onClick={this.onSubmitClick}/>
+                    <div style={{'text-align':'center', 'margin': '1em'}}>
+                    you liked {this.state.likedProfiles.length} profiles
+                    </div>
+                    {(this.state.likedProfiles.length>10) && <div style={{'text-align':'center', 'margin': '1em'}}>
+                    You can only like upto 10 profiles
+                    </div>}
+                    </div>
                     </div>
                     </div>
             );

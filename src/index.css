@@ -50,6 +50,11 @@ body {
   margin: 2em;
 }
 
+.howitworkscolumn {
+  width: inherit;
+  margin-bottom: 2em;
+}
+
 .verifyemailcolumn {
   max-width: 600px;
   margin: 2em;
@@ -63,4 +68,14 @@ body {
 .waitingpagecolumn {
   max-width: 600px;
   margin: 2em;  
+}
+
+.blueblue {
+  background-color: transparent;
+  color: #1E90FF;
+}
+
+.redred {
+  background-color: transparent;
+  color: #DC143C;
 }
