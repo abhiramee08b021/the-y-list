@@ -17,6 +17,7 @@ body {
 .AppContent {
     width:80%;
     margin-bottom: 10em;
+    padding: 2em;
 }
 
 .footer {
@@ -37,11 +38,11 @@ body {
 }
 
 .profilesSegment {
-  text-align: center;
+  padding: 2em;
 }
 
 .column {
-  max-width:450px;
+  max-width:500px;
 }
 
 .landingcolumn {
@@ -52,4 +53,14 @@ body {
 .verifyemailcolumn {
   max-width: 600px;
   margin: 2em;
+}
+
+.aftersubmissioncolumn {
+  max-width: 600px;
+  margin: 2em;  
+}
+
+.waitingpagecolumn {
+  max-width: 600px;
+  margin: 2em;  
 }

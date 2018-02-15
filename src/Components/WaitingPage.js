@@ -5,8 +5,7 @@ import logo from '../Images/the-y-list.png';
 
 function WaitingPageSegment(props) {
     return (
-        <div class="ui column stackable centered page grid">
-            <div class="column wide">
+            <div class="waitingpagecolumn">
                 <Segment className='LandingPageSegment'>
                     <p>
                         <Image src={logo} size='medium' centered/>
@@ -20,7 +19,6 @@ function WaitingPageSegment(props) {
                         url='https://giphy.com/embed/tyqcJoNjNv0Fq'/>
                 </Segment>
             </div>
-        </div>
     )
 }
 

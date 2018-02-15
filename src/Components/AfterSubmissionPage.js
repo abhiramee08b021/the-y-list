@@ -4,8 +4,7 @@ import {Link} from 'react-router-dom';
 
 var AboutPost = () => {
     return (
-        <div class="ui column stackable centered page grid">
-            <div class="column wide">
+            <div class="column">
                 <Segment>
                     <Header>
                     Thank you for your submission! We will send an email when you match soon!
@@ -17,7 +16,6 @@ var AboutPost = () => {
                         url='https://giphy.com/embed/o5oLImoQgGsKY'/>
                 </Segment>
             </div>
-        </div>
     )
 }
 

@@ -132,7 +132,8 @@ class HomePage extends React.Component {
 
         else{
             return(
-                <div className="profilesSegment">
+                    <div style={{padding:'2em'}}>
+                    <div class="ui grid">
                     {profiles.map((profile) => {
                         return (
                             <Profile 
@@ -141,8 +142,11 @@ class HomePage extends React.Component {
                                 profile={profile}/>
                                 )
                     })}
+                    </div>
+                    <div class="ui centered grid">
                     <Button positive content='submit' onClick={this.onSubmitClick}/> 
-                </div>
+                    </div>
+                    </div>
             );
         }
         return(

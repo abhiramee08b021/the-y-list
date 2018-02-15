@@ -20,6 +20,7 @@ class Profile extends React.Component {
         const {liked} = this.state
         const profile = this.props.profile
         return(
+            <div class="four wide column">
             <Card>
                 <Image src={profile.profileImageUrl} />
                 <Card.Content>
@@ -37,6 +38,7 @@ class Profile extends React.Component {
                                </button>}
                 </Card.Content>
             </Card>
+            </div>
         )      
     }
 }
