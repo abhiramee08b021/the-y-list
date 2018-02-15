@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form, Button, Segment, Message, Input, TextArea} from 'semantic-ui-react';
+import {Form, Button, Segment, Message, Input, TextArea, Image} from 'semantic-ui-react';
 import User, {genderDropdownOptions, 
         yaleAffiliationDropdownOptions, 
         yaleGraduationDropdownOptions,
@@ -8,11 +8,12 @@ import User, {genderDropdownOptions,
 import {firebase} from '../index';
 import Validator from 'validator';
 import { addUserInDatabase, uploadProfileImage } from "../Model/UserFunctions";
+import logo from '../Images/the-y-list.png';
 
 var HaveQuestions = () => {
     return (
         <Message>
-            <p class="ui center aligned grid"> Have any questions? <a href="mailto:abhi.moturi@yale.edu?Subject=[The Y List]Heythere!"> Email us! </a> We don't bite.
+            <p class="ui center aligned grid"> Have any questions? <a href="mailto:the.y.list2018@gmail.com?Subject=[The Y List]Heythere!"> Email us! </a> We don't bite.
             </p>
         </Message>
     );
@@ -102,7 +103,7 @@ class SignupForm extends React.Component {
         if (Validator.isEmpty(data.preferGender)) errors.gender = "Please pick a gender you are interested in";
         if (this.state.fileInput.files.length == 0) errors.profileImage = "Please upload a profile image";
         if (!Validator.isEmail(data.email)) errors.email = "Should be an email";
-        if(!data.email.toLowerCase().includes('@yale.edu')) errors.email = "Should be a yale email";
+        //if(!data.email.toLowerCase().includes('@yale.edu')) errors.email = "Should be a yale email";
         if (Validator.isEmpty(data.yaleAffiliation)) errors.yaleAffiliation = "Please pick a yaleAffiliation";
         if (!Validator.isLength(data.password, {min:6})) errors.password = "Password should be atleast 6 chars long";
         return errors;
@@ -111,8 +112,8 @@ class SignupForm extends React.Component {
     render(){
         const { data, errors, loading, isSuccess } = this.state;
         return(
-            <div class="ui column stackable centered page grid">
-            <div class="column twelve wide">
+            <div class="column">
+            <Image src={logo} size='medium' centered/>
             <Segment className='SignupSegment'>
                 <Form onSubmit={this.onSubmit} loading={loading}>
                     {(isSuccess) && <Message positive list={['Successfully Signed up! Redirecting to home page...']} />}
@@ -150,7 +151,6 @@ class SignupForm extends React.Component {
                 </Form>
                 <HaveQuestions/>
             </Segment>
-            </div>
             </div> 
         );
     }

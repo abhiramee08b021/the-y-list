@@ -9,12 +9,13 @@ body {
 }
 
 .LoginSegment {
-  width: 30em;
+  width: 100%;
   padding: 10px;
+  vertical-align:middle;
 }
 
 .AppContent {
-    width:90%;
+    width:80%;
     margin-bottom: 10em;
 }
 
@@ -37,4 +38,18 @@ body {
 
 .profilesSegment {
   text-align: center;
+}
+
+.column {
+  max-width:450px;
+}
+
+.landingcolumn {
+  max-width: 600px;
+  margin: 2em;
+}
+
+.verifyemailcolumn {
+  max-width: 600px;
+  margin: 2em;
 }

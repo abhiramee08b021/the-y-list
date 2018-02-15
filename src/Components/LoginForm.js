@@ -1,8 +1,9 @@
 import React from 'react';
-import {Form, Button, Segment, Message} from 'semantic-ui-react';
+import {Form, Button, Segment, Message, Image} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import Validator from 'validator';
 import {firebase} from '../index';
+import logo from '../Images/the-y-list.png';
 
 var SignUpDiv = () => {
     return (
@@ -56,8 +57,8 @@ class LoginForm extends React.Component {
     render(){
         const { data, errors, isSuccess } = this.state;
         return(
-            <div class="ui column stackable centered page grid">
-            <div class="column twelve wide">
+            <div class="column">
+            <Image src={logo} size='medium' centered/>
             <Segment className='LoginSegment'>
                 <Form onSubmit={this.onSubmit}>
                     {(isSuccess) && <Message positive list={['Successfully Logged in! Redirecting to home page...']} />}
@@ -70,7 +71,6 @@ class LoginForm extends React.Component {
                 </Form>
                 <SignUpDiv/>
             </Segment>
-            </div>
             </div>
         );
     }

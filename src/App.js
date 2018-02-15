@@ -15,12 +15,11 @@ class App extends Component {
     return (
       <div className="App">
         <Navigation/>
-        <div className="AppContent" style={{ 'text-align':'center' }}>
+        <div className="AppContent" class="ui middle aligned center aligned grid">
         <Route exact={true} path={'/login'} component={LoginForm} />
         <Route exact={true} path={'/signup'} component={SignupForm} />
         <Route exact={true} path={'/'} component={HomePage} />
         </div>
-        <Footer/>
       </div>
     );
   }

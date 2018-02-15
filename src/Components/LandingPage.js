@@ -5,8 +5,7 @@ import logo from '../Images/the-y-list.png';
 
 var LandingPageSegment = () => {
     return (
-        <div class="ui column stackable centered page grid">
-            <div class="column wide">
+            <div class="landingcolumn">
                 <Segment className='LandingPageSegment'>
                     <p>
                         <Image src={logo} size='medium' centered/>
@@ -27,7 +26,6 @@ var LandingPageSegment = () => {
                         defaultActive
                         url='https://giphy.com/embed/100QWMdxQJzQC4'/>
                 </Segment>
-            </div>
         </div>
     )
 }
