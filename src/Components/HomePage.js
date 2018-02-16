@@ -154,7 +154,7 @@ class HomePage extends React.Component {
                     you liked {this.state.likedProfiles.length} profiles
                     </div>
                     {(this.state.likedProfiles.length>10) && <div style={{'text-align':'center', 'margin': '1em'}}>
-                    You can only like upto 10 profiles
+                    You can only like up to 10 profiles
                     </div>}
                     </div>
                     </div>
