@@ -126,8 +126,8 @@ class HomePage extends React.Component {
         }
         
         const profiles = this.state.profiles;
-        if (profiles.length < 35){
-            var remaining = 35-profiles.length
+        if (profiles.length < 20){
+            var remaining = 20-profiles.length
             return (
                 <WaitingPage rem={remaining}/>
             );
