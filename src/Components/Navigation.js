@@ -67,6 +67,7 @@ class Navigation extends React.Component {
              Home
             </Menu.Item>
             <Menu.Menu position='right'>
+            <Menu.Item> Beta </Menu.Item>
             { !this.state.data.isLoggedin && <LoginMenuItem/>}
             { !this.state.data.isLoggedin && <SignupMenuItem/>}
             { this.state.data.isLoggedin && <LogoutMenuItem/>}
