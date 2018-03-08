@@ -1,0 +1,27 @@
+<div class="ui fixed large menu">
+    <div class="ui container">
+        <a href="/" class="header item">
+            <img src="/public/static/images/the-y-list.png">
+        </a>
+        <a href="/profiles" class="header item">
+            Browse Profiles
+        </a>
+        <div class="right menu">
+            <div class="item">
+                <a href="/about">How it works</a>
+            </div>
+            {% if user %}
+            <div class="item">
+                <a href="/user/logout">Logout</a>
+            </div>
+            {% else %}
+            <div class="item">
+                <a class="ui button" href="/user/login">Login</a>
+            </div>
+            <div class="item">
+                <a class="ui positive button" href="/user/register">Signup</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

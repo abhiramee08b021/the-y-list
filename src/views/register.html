@@ -1,0 +1,125 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="ui center aligned grid">
+  <div class="column">
+    <h2 class="ui image header">
+      <div class="register-content">
+          <img class="ui centered small image" src="/public/static/images/the-y-list.png"/>
+      </div>
+      <div class="register-content">
+        Register to create your Giggly account
+      </div>
+    </h2>
+    <form action="/user/register" method="POST" class="ui large form register">
+      <div class="ui raised segment">
+        
+        <div class="field">
+          <label for="name">I am</label>
+          <div class="ui input">
+            <input type="text" name="name" placeholder="Jane Q Yalie">
+          </div>
+        </div>
+        
+        <div class="field">
+          <label for="age">Age</label>
+          <select class="ui dropdown" name="age">
+              {% for i in range(18, 40) -%}
+                  <option value={{i}}>{{i}}</option>
+              {% endfor %}
+          </select>
+        </div>
+        
+        <div class="field">
+          <label for="gender">Gender</label>
+          <select class="ui dropdown" name="gender">
+              {% for i in ['male', 'female', 'other'] -%}
+                  <option value="{{i}}">{{i}}</option>
+              {% endfor %}
+          </select>
+        </div>
+        
+        <div class="field">
+          <label for="age">I am interested in ..</label>
+          <select class="ui dropdown" name="prefer_gender">
+              {% for i in ['male', 'female', 'other'] -%}
+                  <option value="{{i}}">{{i}}</option>
+              {% endfor %}
+          </select>
+        </div>
+        
+        <div class="field">
+          <label for="email">Email</label>
+          <div class="ui input">
+            <input type="email" name="email" placeholder="jane.yalie@yale.edu">
+          </div>
+        </div>
+        {% set schools = ['school of management', 
+                        'graduate school of arts and sciences',
+                        'school of architecture',
+                        'school of art',
+                        'divinity school',
+                        'school of drama',
+                        'school of engineering and applied science',
+                        'school of forestry and environmental studies',
+                        'law schools',
+                        'school of medicine',
+                        'school of music',
+                        'school of nursing',
+                        'school of public health',
+                        'yale college',
+                        'other'] %}
+        <div class="field">
+          <label for="school">Yale affiliation</label>
+          <select class="ui search selection dropdown" name="school">
+              {% for i in schools -%}
+                  <option value='{{i}}'>{{i}}</option>
+              {% endfor %}
+          </select>
+        </div>
+        
+        <div class="field">
+          <label for="about">Say a little about yourself</label>
+          <div class="ui input">
+            <textarea rows="4" type="text" name="about" placeholder="Brag a little, but not too much"></textarea>
+          </div>
+        </div>
+        
+        <div class="field">
+          <label for="profile_image">Upload Profile Image</label>
+          <div class="ui input">
+            <input class="ui green button" type="file" name="profile_image"/> 
+          </div>
+        </div>
+        
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="ui input">
+            <input type="password" name="password" placeholder="">
+          </div>
+        </div>
+        
+        <div class="field">
+          <label for="password confirmation">Confirm Password</label>
+          <div class="ui input">
+            <input type="password" name="passwordConfirmation" placeholder="">
+          </div>
+        </div>
+        
+        <div class="field">
+            <input class="ui button fluid positive" type="submit" name="Register" value="Register">
+        </div>
+        
+      </div>
+    </form>
+    
+    {% if errors %}
+      <div class="ui negative message">
+        {{errors}}
+      </div>
+    {% endif %}
+    
+  </div>
+</div>
+{% endblock %}

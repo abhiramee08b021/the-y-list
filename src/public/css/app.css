@@ -1,0 +1,38 @@
+    .image {
+      margin-top: 0px;
+    }
+    .column {
+      max-width: 450px;
+    }
+    .aboutcolumn {
+      max-width: 800px;
+    }
+    
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding-top: 7em !important;
+    }
+    .footer {
+      margin: auto 0 0 0 !important;
+    }
+    .menu {
+      height: 5em;
+    }
+    div.content {
+      margin-bottom: 3em;
+    }
+    .banner {
+      background-image: url(/public/static/images/giggly_banner.jpg);
+      margin-bottom: 2em;
+    }
+    .work-with-someone {
+      text-align: center;
+    }
+    .profiles-container {
+      width: fit-content;
+    }
+    .register {
+        text-align: left;
+    }
