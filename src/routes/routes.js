@@ -13,10 +13,12 @@ router.get('/user/register', userControllers.registerForm);
 router.post('/user/register', userControllers.register);
 router.get('/user/logout', userControllers.logout);
 
+
+router.get('/:id/profile', userControllers.getProfile);
+router.get('/:id/profile/edit', userControllers.editProfileForm);
 /*
-router.get('/:username/profile', userControllers.getProfile);
 router.get('/matches', indexControllers.getMatches);
-router.get('/:username/profile/edit', userControllers.editProfileForm);
+
 router.post('/:username/profile/edit', userControllers.editProfile);
 
 router.post('/:username/profile/like', userControllers.likeProfile);

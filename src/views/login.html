@@ -2,24 +2,26 @@
 
 {% block content %}
 
-<div class="ui middle aligned center aligned grid">
-  <div class="column">
-    <h2 class="ui image header">
-      <div class="login-content">
-          <img class="ui centered small image" src="/public/static/images/the-y-list.png"/>
-        </div>
-      <div class="login-content">
-        Log-in to your Giggly account
-      </div>
-    </h2>
-    <form action="/user/login" method="POST" class="ui large form">
-      <div class="ui raised segment">
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="user icon"></i>
-            <input type="text" name="email" placeholder="E-mail address">
+<div id="banner-wrapper">
+	<div id="banner" class="box container">
+		<div class="row">
+		  <div class="7u 12u(medium)">
+          <div class="login-content">
+              <img class="ui centered image" src="/public/static/images/the-y-list.png"/>
+            </div>
+          <div class="login-content">
+            <h2 class="ui centered"> Login </h2>
           </div>
-        </div>
+		  </div>
+      <div class="5u 12u(medium)">
+        <form action="/user/login" method="POST" class="ui large form">
+          <div class="ui raised segment">
+            <div class="field">
+              <div class="ui left icon input">
+                <i class="user icon"></i>
+                <input type="text" name="email" placeholder="E-mail address">
+              </div>
+            </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
@@ -29,19 +31,20 @@
         <input type="submit" name="Login" value="Login" class="ui fluid positive submit button">
       </div>
 
-      <div class="ui error message"></div>
-
-    </form>
-    
-    {% if errors %}
-      <div class="ui negative message">
-        {{errors}}
-      </div>
-    {% endif %}
-    <div class="ui message">
-      New to us? <a href="/user/register">Register</a>
-    </div>
+          <div class="ui error message"></div>
+        </form>
+        
+        {% if errors %}
+          <div class="ui negative message">
+            {{errors}}
+          </div>
+        {% endif %}
+        <div class="ui message">
+          New to us? <a href="/user/register">Register</a>
+        </div>
+      </div>  
   </div>
+</div>
 </div>
 
 {% endblock %}

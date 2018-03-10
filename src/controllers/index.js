@@ -7,7 +7,7 @@ const Users = require('../models/users');
 async function index(ctx) {
     const template = 'index.html';
     //const data = await Users.getAllProfiles(ctx.db);
-    return ctx.render(template)//, { profiles: data, user: ctx.state.user });
+    return ctx.render(template, {user: {}})//, { profiles: data, user: ctx.state.user });
 }
 
 /**

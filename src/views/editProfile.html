@@ -1,0 +1,104 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div id="main-wrapper">
+	<div class="container">
+	    <div class="row">
+			<h2>Edit Profile</h2>
+		</div>
+		<div class="row 200%">
+		    
+    			<div class="4u 12u(medium)">
+    			    <div id="sidebar">
+    					<section class="widget thumbnails">
+    						<img class="ui fluid rounded image" src="{{ user.profile_img_url }}">
+    					</section>
+    				</div>
+    			 </div>
+    			 
+    			 <div class="8u 12u(medium) important(medium)">
+    			<!-- Content -->
+    			<form class="ui form" action="/{{user.user_id}}/profile/edit" method="post">
+    				<div id="content" style="font-size:1.5em">
+    					<section class="last">
+    					    <div class="field">
+    					        <input style="margin-bottom:0!important;" value="{{ user.name }}">
+    					    </div>
+    					    <div class="two fields">
+                                <div class="four wide field">
+                                    <select class="ui dropdown" name="age">
+                                      {% for i in range(18, 40) -%}
+                                          <option value={{i}}>{{i}}</option>
+                                      {% endfor %}
+                                    </select>
+                                </div>
+                                {% set schools = ['school of management', 
+                                                    'graduate school of arts and sciences',
+                                                    'school of architecture',
+                                                    'school of art',
+                                                    'divinity school',
+                                                    'school of drama',
+                                                    'school of engineering and applied science',
+                                                    'school of forestry and environmental studies',
+                                                    'law schools',
+                                                    'school of medicine',
+                                                    'school of music',
+                                                    'school of nursing',
+                                                    'school of public health',
+                                                    'yale college',
+                                                    'other'] %}
+                                <div class="twelve wide field">
+                                    <select class="ui search selection dropdown" name="school">
+                                      {% for i in schools -%}
+                                          <option value='{{i}}'>{{i}}</option>
+                                      {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+    					    <h3 style="margin-bottom:0!important"> About Me </h3>
+    					    <div class="field">
+    					        <textarea rows="4" type="text" name="about" value="{{user.about}}"></textarea>
+    					    </div>
+    					    <div class="two fields">
+        					    <div class="field">
+                                  <label for="gender">Gender</label>
+                                  <select class="ui dropdown" name="gender">
+                                      {% for i in ['male', 'female', 'other'] -%}
+                                          <option value="{{i}}">{{i}}</option>
+                                      {% endfor %}
+                                  </select>
+                                </div>
+                                
+                                <div class="field">
+                                  <label for="age">I am interested in ..</label>
+                                  <select class="ui dropdown" name="prefer_gender">
+                                      {% for i in ['male', 'female', 'other'] -%}
+                                          <option value="{{i}}">{{i}}</option>
+                                      {% endfor %}
+                                  </select>
+                                </div>
+                            </div>
+    					    <div class="field">
+                              <label for="profile_image">Upload New Profile Image</label>
+                              <div class="ui input">
+                                <input class="ui green button" type="file" name="profile_image"/> 
+                              </div>
+                            </div>
+                            
+                            <div class="field">
+                                <input class="ui button positive" type="submit" name="Save" value="Save Changes">
+                            </div>
+                            
+                            {% if errors %}
+                              <div class="ui negative message">
+                                {{errors}}
+                              </div>
+                            {% endif %}
+    					</section>
+    				</div>
+    			</div>
+			</form>
+	    </div>
+	</div>
+</div>
+{% endblock %}
