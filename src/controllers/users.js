@@ -1,6 +1,11 @@
 const Users = require('../models/users');
 const firebase = require('firebase');
 const config = require('../config');
+const AWS = require('aws-sdk');
+const awsConfig = require('aws-config');
+
+//Initialize AWS for storage 
+AWS.config = awsConfig(config.aws_config);
 
 // Initialize firebase
 firebase.initializeApp(config.firebase_config);
@@ -81,7 +86,8 @@ async function register(ctx) {
         await firebase.auth().createUserWithEmailAndPassword(email, password)
         const currentUser = firebase.auth().currentUser
         const userId = currentUser.uid;
-        var uploadTask = firebase.storage().ref().child('profileImages/')
+        var storageRef = firebase.storage().ref();
+        //var uploadTask = firebase.storage().ref().child('profileImages/')
         const userData = {
             user_id: userId,
             email: email,
